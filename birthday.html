@@ -3,26 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="refresh" content="5; url=https://www.google.com/">
     <title>Document</title>
     <link rel="stylesheet" href="birthday.css">
 </head>
 <body>
     <h1>Happy Birthday</h1>
     <canvas id="birthday"></canvas>
-    <div id="delayMsg"></div>
-<input type="button" onclick="delayRedirect()" value="Click to Redirect"/>
-<script src="birthday.js">>
-function delayRedirect(){
-    document.getElementById('delayMsg').innerHTML = 'Please wait you\'ll be redirected after <span id="countDown">5</span> seconds....';
-    var count = 5;
-    setInterval(function(){
-        count--;
-        document.getElementById('countDown').innerHTML = count;
-        if (count == 0) {
-            window.location = 'https://www.google.com'; 
-        }
-    },1000);
-}
-</script>
+<script src="birthday.js">></script>
 </body>
 </html>
