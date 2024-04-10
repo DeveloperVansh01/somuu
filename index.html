@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Panda Login Form</title>
+  <title>Somyaaaa</title>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap'><link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -37,12 +37,31 @@
 <!-- partial -->
   <script  src="./script.js"></script>
   <script>
-    function func(){
-        var email = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
-        if(email == "somuu" && password == "22April"){
-            document.location.href='./birthday.html'
-        }
+    const form = document.querySelector("form")
+
+    form.addEventListener("submit",(e)=>{
+    e.preventDefault()
+
+    const username = form.username.value
+    const password = form.password.value
+
+    const authenticated = authentication(username,password)
+
+    if(authenticated){
+    window.location.href = "birthday.html"
+    }else{
+    alert("wrong")
+    }
+    })
+
+    // function for checking username and password
+
+    function authentication(username,password){
+    if(username === "admin" && password === "password"){
+    return true
+    }else{
+    return false
+    }
     }
 </script>
 </body>
