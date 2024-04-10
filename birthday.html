@@ -9,6 +9,8 @@
 <body>
     <h1>Happy Birthday</h1>
     <canvas id="birthday"></canvas>
+    <div id="delayMsg"></div>
+<input type="button" onclick="delayRedirect()" value="Click to Redirect"/>
 <script src="birthday.js">>
 function delayRedirect(){
     document.getElementById('delayMsg').innerHTML = 'Please wait you\'ll be redirected after <span id="countDown">5</span> seconds....';
