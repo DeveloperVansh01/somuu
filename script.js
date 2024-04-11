@@ -1,68 +1,74 @@
-let usernameRef = document.getElementById("username");
-let passwordRef = document.getElementById("password");
-let eyeL = document.querySelector(".eyeball-l");
-let eyeR = document.querySelector(".eyeball-r");
-let handL = document.querySelector(".hand-l");
-let handR = document.querySelector(".hand-r");
+const form = document.getElementById('form');
+const username = document.getElementById('username');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const password2 = document.getElementById('password2');
 
-let normalEyeStyle = () => {
-  eyeL.style.cssText = `
-    left:0.6em;
-    top: 0.6em;
-  `;
-  eyeR.style.cssText = `
-  right:0.6em;
-  top:0.6em;
-  `;
-};
+//Show input error messages
+function showError(input, message) {
+    const formControl = input.parentElement;
+    formControl.className = 'form-control error';
+    const small = formControl.querySelector('small');
+    small.innerText = message;
+}
 
-let normalHandStyle = () => {
-  handL.style.cssText = `
-        height: 2.81em;
-        top:8.4em;
-        left:7.5em;
-        transform: rotate(0deg);
-    `;
-  handR.style.cssText = `
-        height: 2.81em;
-        top: 8.4em;
-        right: 7.5em;
-        transform: rotate(0deg)
-    `;
-};
-//When clicked on username input
-usernameRef.addEventListener("focus", () => {
-  eyeL.style.cssText = `
-    left: 0.75em;
-    top: 1.12em;  
-  `;
-  eyeR.style.cssText = `
-    right: 0.75em;
-    top: 1.12em;
-  `;
-  normalHandStyle();
-});
-//When clicked on password input
-passwordRef.addEventListener("focus", () => {
-  handL.style.cssText = `
-        height: 6.56em;
-        top: 3.87em;
-        left: 11.75em;
-        transform: rotate(-155deg);    
-    `;
-  handR.style.cssText = `
-    height: 6.56em;
-    top: 3.87em;
-    right: 11.75em;
-    transform: rotate(155deg);
-  `;
-  normalEyeStyle();
-});
-//When clicked outside username and password input
-document.addEventListener("click", (e) => {
-  let clickedElem = e.target;
-  if (clickedElem != usernameRef && clickedElem != passwordRef) {
-    normalEyeStyle();
-    normalHandStyle();
-  }
-});
+//show success colour
+function showSucces(input) {
+    const formControl = input.parentElement;
+    formControl.className = 'form-control success';
+}
+
+//check email is valid
+function checkEmail(input) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(re.test(input.value.trim())) {
+        showSucces(input)
+    }else {
+        showError(input,'Email is not invalid');
+    }
+}
+
+//checkRequired fields
+function checkRequired(inputArr) {
+    inputArr.forEach(function(input){
+        if(input.value.trim() === ''){
+            showError(input,`${getFieldName(input)} is required`)
+        }else {
+            showSucces(input);
+        }
+    });
+}
+
+//check input Length
+function checkLength(input, min ,max) {
+    if(input.value.length < min) {
+        showError(input, `${getFieldName(input)} must be at least ${min} characters`);
+    }else if(input.value.length > max) {
+        showError(input, `${getFieldName(input)} must be les than ${max} characters`);
+    }else {
+        showSucces(input);
+    }
+}
+
+//get FieldName
+function getFieldName(input) {
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+
+// check passwords match
+function checkPasswordMatch(input1, input2) {
+    if(input1.value !== input2.value) {
+        showError(input2, 'Passwords do not match');
+    }
+}
+
+//Event Listeners
+form.addEventListener('submit',function(e) {
+    e.preventDefault();
+
+    checkRequired([username, email, password, password2]);
+    checkLength(username,3,15);
+    checkLength(password,6,25);
+    checkEmail(email);
+    checkPasswordMatch(password, password2);
+}); 
