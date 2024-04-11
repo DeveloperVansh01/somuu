@@ -13,11 +13,17 @@
 <body>
 <!-- partial:index.partial.html -->
     <div class="container">
-      <form>
-        <label for="username">Username:</label>
-        <input type="text" id="username" placeholder="Username here..." />
-        <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Password here..." />
+        <form id="form" class="form">
+            <div class="form-control">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Username here..." />
+                <small>Error Message</small>
+            </div>
+            <div class="form-control">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Password here..." />
+                <small>Error Message</small>
+            </div>
         <button>Login</button>
       </form>
       <div class="ear-l"></div>
@@ -39,7 +45,7 @@
       <div class="paw-l"></div>
       <div class="paw-r"></div>
     </div
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js'></script><script  src="./script.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js'></script><script  src="script.js"></script>
   <script>
     const form = document.querySelector("form")
 
@@ -61,7 +67,7 @@
     // function for checking username and password
 
     function authentication(username,password){
-    if(username === "somuu" && password === "22april"){
+    if(username === "somuu","somya","Somuu","Somya" && password === "22april", "22", "22April"){
     return true
     }else{
     return false
