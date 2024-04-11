@@ -240,8 +240,13 @@ form button {
   left: 1.12em;
   box-shadow: 0.87em 0.37em #ffffff, -0.87em 0.37em #ffffff;
 }
-@media screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+    margin-right: -2px;
+  }
   .container {
-    font-size: 14px;
+    font-size: 15px;
+    position: fixed;
   }
 }
