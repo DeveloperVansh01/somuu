@@ -17,12 +17,12 @@
             <div class="form-control">
                 <label for="username">Username:</label>
                 <input type="text" id="username" placeholder="Username here..." />
-<!--                 <small>Error Message</small> -->
+                <small>Error Message</small>
             </div>
             <div class="form-control">
                 <label for="password">Password:</label>
                 <input type="password" id="password" placeholder="Password here..." />
-<!--                 <small>Error Message</small> -->
+                <small>Error Message</small>
             </div>
         <button>Login</button>
       </form>
@@ -58,7 +58,7 @@
     const authenticated = authentication(username,password)
 
     if(authenticated){
-    window.location.href = "birthday.html"
+    window.location.assign = "birthday.html"
     }else{
     alert("wrong")
     }
