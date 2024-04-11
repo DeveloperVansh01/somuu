@@ -70,40 +70,36 @@ document.addEventListener("click", (e) => {
 
 
 
-// const form = document.getElementById('form');
-// const username = document.getElementById('username');
-// const password = document.getElementById('password');
+const form = document.getElementById('form');
+const username = document.getElementById('username');
+const password = document.getElementById('password');
 
-// //Show input error messages
-// function showError(input, message) {
-//     const formControl = input.parentElement;
-//     formControl.className = 'form-control error';
-//     const small = formControl.querySelector('small');
-//     small.innerText = message;
-//  }
+//Show input error messages
+function showError(input, message) {
+    const formControl = input.parentElement;
+    formControl.className = 'form-control error';
+    const small = formControl.querySelector('small');
+    small.innerText = message;
+ }
 
-// //checkRequired fields
-// function checkRequired(inputArr) {
-//     inputArr.forEach(function(input){
-//         if(input.value.trim() === ''){
-//             showError(input,`${getFieldName(input)} is required`)
-//         }else {
-//             showSucces(input);
-//         }
-//     });
-// }
+//checkRequired fields
+function checkRequired(inputArr) {
+    inputArr.forEach(function(input){
+        if(input.value.trim() === ''){
+            showError(input,`${getFieldName(input)} is required`)
+        }
 
 
-// //get FieldName
-// function getFieldName(input) {
-//     return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-// }
+//get FieldName
+function getFieldName(input) {
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
 
-// //Event Listeners
-// form.addEventListener('submit',function(e) {
-//     e.preventDefault();
+//Event Listeners
+form.addEventListener('submit',function(e) {
+    e.preventDefault();
 
-//     checkRequired([username, password]);
-//     checkLength(username,3,15);
-//     checkLength(password,6,25);
-// }); 
+    checkRequired([username, password]);
+    checkLength(username,3,15);
+    checkLength(password,6,25);
+}); 
